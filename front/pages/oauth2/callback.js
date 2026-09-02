@@ -6,7 +6,7 @@ import { loginSuccess } from "../../reducers/authReducer";
 import axios from "axios";
 // String targetUrl = redirectUrl + "?accessToken=" + access;   // 쿼리스트링
 
-const API_BASE_URL=production.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8080";
+const API_BASE_URL=process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8080";
 
 //2. 부품 + export
 export default function OAuth2CallbackPapge(){
