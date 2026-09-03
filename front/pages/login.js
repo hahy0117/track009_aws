@@ -32,7 +32,7 @@ export default function LoginPage() {
     } , [user , router]);
 
     const handleSocialLogin=(provider)=>{ 
-        window.location.href = `${API_BASE_URL}/${provider}`;
+        window.location.href = `${API_BASE_URL}/oauth2/authorization/${provider}`;
     }; 
 
     //////////////////////////////////////////////
