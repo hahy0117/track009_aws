@@ -22,7 +22,16 @@ function AppLayout({  children , initialUser  }){   //★ 대체부품, 초기�
     const dispatch     = useDispatch();
     const {user}       = useSelector((state)=> state.auth); 
     
-    const handleLogout = ()=>{   dispatch(logoutRequest());   router.replace('/login');  };  // 디스패치(logoutRequest()) / 경로 login 넘기기   //##
+    const handleLogout = (e)=>{   
+        if(e && e.preventDefault) e.preventDefault();
+
+        dispatch(logoutRequest());   
+        if(typeof window !== 'undefined'){
+            localStorage.removeItem('accessToken');
+            sessionStorage.clear();
+            window.location.href='/login';
+        }
+        //router.replace('/login');  };  // 디스패치(logoutRequest()) / 경로 login 넘기기   //##
 
     const menuItems = [
        ...( user  &&  user.nickname
@@ -83,6 +92,7 @@ function AppLayout({  children , initialUser  }){   //★ 대체부품, 초기�
     </Drawer>
     <Content  style={{ padding: "40px" }}>{children}</Content>
     </Layout>);
+}
 }
 //3. export
 export   default  AppLayout;
